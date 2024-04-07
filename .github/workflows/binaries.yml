@@ -14,22 +14,22 @@ jobs:
 
     - name: Setup Lua
       run: |
-        curl -O https://www.lua.org/ftp/lua-5.1.5.tar.gz
-        tar -xZf lua-5.1.5.tar.gz
-        cd lua-5.1.5; make
+        curl -O https://www.lua.org/ftp/lua-5.4.6.tar.gz
+        tar -xzf lua-5.4.6.tar.gz
+        cd lua-5.4.6; make
 
     - name: Get LPeg
       run: |
-        curl -o lpeg.tar.gz http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.0.2.tar.gz
-        tar -xZf lpeg.tar.gz
+        curl -o lpeg.tar.gz https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.1.0.tar.gz
+        tar -xzf lpeg.tar.gz
 
     - name: Get Luafilesystem
       run: |
         curl -L -o luafilesystem.tar.gz https://github.com/keplerproject/luafilesystem/archive/v1_8_0.tar.gz
-        tar -xZf luafilesystem.tar.gz
+        tar -xzf luafilesystem.tar.gz
 
     - name: Build
-      run: gcc -o moon '-Ilua-5.1.5/src/' bin/binaries/moon.c lpeg-1.0.2/lpvm.c lpeg-1.0.2/lpcap.c lpeg-1.0.2/lptree.c lpeg-1.0.2/lpcode.c lpeg-1.0.2/lpprint.c
+      run: gcc -o moon '-Ilua-5.4.6/src/' bin/binaries/moon.c lpeg-1.1.0/lpvm.c lpeg-1.1.0/lpcap.c lpeg-1.1.0/lptree.c lpeg-1.1.0/lpcode.c lpeg-1.1.0/lpprint.c
 
 
   windows:
@@ -47,28 +47,28 @@ jobs:
 
     - name: Setup Lua
       run: |
-        curl -O https://www.lua.org/ftp/lua-5.1.5.tar.gz
-        tar -xZf lua-5.1.5.tar.gz
-        cd lua-5.1.5; make PLAT=mingw
+        curl -O https://www.lua.org/ftp/lua-5.4.6.tar.gz
+        tar -xzf lua-5.4.6.tar.gz
+        cd lua-5.4.6; make PLAT=mingw
 
     - name: Get LPeg
       run: |
-        curl -o lpeg.tar.gz http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.0.2.tar.gz
-        tar -xZf lpeg.tar.gz
+        curl -o lpeg.tar.gz https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.1.0.tar.gz
+        tar -xzf lpeg.tar.gz
 
     - name: Get Luafilesystem
       run: |
         curl -L -o luafilesystem.tar.gz https://github.com/keplerproject/luafilesystem/archive/v1_8_0.tar.gz
-        tar -xZf luafilesystem.tar.gz
+        tar -xzf luafilesystem.tar.gz
 
     - name: List Files
       run: Get-ChildItem -Recurse
 
     - name: Run Lua
-      run: lua-5.1.5/src/lua.exe -v
+      run: lua-5.4.6/src/lua.exe -v
 
     - name: Build
-      run: gcc -o moon.exe '-Ilua-5.1.5/src/' bin/binaries/moon.c lpeg-1.0.2/lpvm.c lpeg-1.0.2/lpcap.c lpeg-1.0.2/lptree.c lpeg-1.0.2/lpcode.c lpeg-1.0.2/lpprint.c
+      run: gcc -o moon.exe '-Ilua-5.4.6/src/' bin/binaries/moon.c lpeg-1.1.0/lpvm.c lpeg-1.1.0/lpcap.c lpeg-1.1.0/lptree.c lpeg-1.1.0/lpcode.c lpeg-1.1.0/lpprint.c
 
 
 
